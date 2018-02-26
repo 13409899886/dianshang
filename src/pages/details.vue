@@ -11,40 +11,21 @@
     		
     </div>
     <div class="side side-right">
-    	<slider :sliders="sliderList" :speed="1000"></slider>
-    	<div class="productBox">
-    		<div class="obj" v-for="(item,index) in product.body" :class="{last:index%2!==0}">
-    			<div class="weui-media-box weui-media-box_appmsg">
-	            <div class="weui-media-box__hd" :style="'background-image: url(../../static/images/'+item.Url+');'"></div>
-	            <div class="weui-media-box__bd">
-	                <h4 class="weui-media-box__title">{{item.title}}</h4>
-	                <p class="weui-media-box__desc">{{"$"+item.price}}</p>
-	                <router-link :to="{path:'/details/2'}">
-	                	<a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_primary">购买</a>
-	                </router-link>
-	            </div>
-	        </div>
-    		</div>
-    		
-    	</div>
+    	<router-view></router-view>
     </div>
     
   </div>
 </template>
 
 <script>
-import Slider from "../components/slider"
 export default {
 	data(){
 		return{
 			productList:"",
-			product:"",
-			sliderList:[],
-			show:true
+			
 		}
 	},
 	components:{
-		Slider
 	},
 	methods:{
 		
@@ -57,21 +38,7 @@ export default {
 	  }, response => {
 	      console.log("response"); //成功回调
 	  });
-	  //右下部产品购买
-	  this.$http.get('../../static/productList.json').then(response => {
-//    	console.log(response);//成功回调
-      	this.product=response
-	  }, response => {
-	      console.log("response"); //成功回调
-	  });
-	  //获取轮播参数
-	  this.$http.get('../../static/sliderList.json').then(response => {
-      	
-      	this.sliderList=response.body
-      	console.log(this.sliderList);//成功回调
-	  }, response => {
-	      console.log("response"); //成功回调
-	  });
+	 
   }
 }
 </script>
