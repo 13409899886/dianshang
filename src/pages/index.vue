@@ -19,7 +19,7 @@
 	            <div class="weui-media-box__bd">
 	                <h4 class="weui-media-box__title">{{item.title}}</h4>
 	                <p class="weui-media-box__desc">{{"$"+item.price}}</p>
-	                <router-link :to="{path:'/details/2'}">
+	                <router-link :to="{path:'/details/2/details1'}">
 	                	<a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_primary">购买</a>
 	                </router-link>
 	            </div>
@@ -47,9 +47,16 @@ export default {
 		Slider
 	},
 	methods:{
-		
+//		callback(val){
+//			console.log(val)
+//		}
 	},
   mounted(){
+//	this.http.jsonp(url,{params: {pageID:29},jsonp:"_callback"})
+	 this.$http.jsonp("http://192.168.1.102/zhzy2018/code/index.php?s=/Api/ServiceWeb/getZiyangyinxing",{jsonpCallback: "callback"}).then(function(response){
+				console.log(response)
+   })
+  	
   	//左侧产品类型
 		this.$http.get('../../static/test.json').then(response => {
 //    	console.log(response);//成功回调

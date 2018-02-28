@@ -1,7 +1,9 @@
 <template>
   <div style="background: #f0f0f0; min-height: 100%;">
     <div class="header">
+    	<router-link :to="{path:'/'}">
     	<img src="../../static/images/logo.png"/>
+    	</router-link>
     	<ul>
     		<li @click="show('Login')">登陆</li>
     		<li @click="show('Regist')">注册</li>
